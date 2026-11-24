@@ -1,0 +1,140 @@
+<mxfile host="Electron">
+  <diagram name="Delete Project" id="delete-project-activity">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="920" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Swimlanes -->
+        <mxCell id="lane-user" value="User" style="swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="240" height="820" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-client" value="Client App (Web / Mobile)" style="swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="40" width="280" height="820" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-backend" value="Backend API (Projects)" style="swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="40" width="280" height="820" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-db" value="PostgreSQL DB" style="swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="40" width="240" height="820" as="geometry" />
+        </mxCell>
+
+        <!-- User Nodes -->
+        <mxCell id="start" value="" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="lane-user">
+          <mxGeometry x="105" y="45" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="act-click" value="Click &quot;Delete&quot; on Project" style="rounded=1;whiteSpace=wrap;html=1;arcSize=25;fillColor=#ffffff;strokeColor=#333333;" vertex="1" parent="lane-user">
+          <mxGeometry x="40" y="105" width="160" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act-confirm" value="Respond to Confirmation&#xa;Prompt" style="rounded=1;whiteSpace=wrap;html=1;arcSize=25;fillColor=#ffffff;strokeColor=#333333;" vertex="1" parent="lane-user">
+          <mxGeometry x="30" y="195" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Client Nodes -->
+        <mxCell id="act-dialog" value="Display Confirmation&#xa;Dialog" style="rounded=1;whiteSpace=wrap;html=1;arcSize=25;fillColor=#ffffff;strokeColor=#333333;" vertex="1" parent="lane-client">
+          <mxGeometry x="60" y="105" width="160" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="dec-confirm" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;" vertex="1" parent="lane-client">
+          <mxGeometry x="120" y="200" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act-delete-req" value="Send DELETE /api/projects/:id&#xa;(with JWT)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=25;fillColor=#ffffff;strokeColor=#333333;" vertex="1" parent="lane-client">
+          <mxGeometry x="50" y="315" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="act-err" value="Show Error Message&#xa;(401 / 404)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=25;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane-client">
+          <mxGeometry x="50" y="420" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="act-remove-ui" value="Remove Project Card&#xa;from Sidebar" style="rounded=1;whiteSpace=wrap;html=1;arcSize=25;fillColor=#ffffff;strokeColor=#333333;" vertex="1" parent="lane-client">
+          <mxGeometry x="50" y="645" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="end" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="lane-client">
+          <mxGeometry x="125" y="755" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Backend Nodes -->
+        <mxCell id="act-auth" value="Verify JWT &amp;&#xa;Project Ownership" style="rounded=1;whiteSpace=wrap;html=1;arcSize=25;fillColor=#ffffff;strokeColor=#333333;" vertex="1" parent="lane-backend">
+          <mxGeometry x="60" y="315" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="dec-auth" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;" vertex="1" parent="lane-backend">
+          <mxGeometry x="120" y="425" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act-del-ent" value="Delete Project &amp;&#xa;Destroy Entity" style="rounded=1;whiteSpace=wrap;html=1;arcSize=25;fillColor=#ffffff;strokeColor=#333333;" vertex="1" parent="lane-backend">
+          <mxGeometry x="50" y="535" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="act-200" value="Return 200 OK&#xa;(Deleted Confirmation)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=25;fillColor=#ffffff;strokeColor=#333333;" vertex="1" parent="lane-backend">
+          <mxGeometry x="50" y="645" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- DB Nodes -->
+        <mxCell id="act-db" value="DELETE FROM projects&#xa;WHERE id = :id" style="rounded=1;whiteSpace=wrap;html=1;arcSize=25;fillColor=#ffffff;strokeColor=#333333;" vertex="1" parent="lane-db">
+          <mxGeometry x="30" y="535" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" edge="1" parent="1" source="start" target="act-click" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="act-click" target="act-dialog" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="act-dialog" target="act-confirm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="212" />
+              <mxPoint x="160" y="212" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="act-confirm" target="dec-confirm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="[Cancel]" edge="1" parent="1" source="dec-confirm" target="end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;entryX=1;entryY=0.5;">
+          <mxGeometry x="-0.85" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="535" y="260" />
+              <mxPoint x="535" y="810" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="[Confirm]" edge="1" parent="1" source="dec-confirm" target="act-delete-req" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="act-delete-req" target="act-auth" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="act-auth" target="dec-auth" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="[401 / 404]" edge="1" parent="1" source="dec-auth" target="act-err" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" value="[Authorized]" edge="1" parent="1" source="dec-auth" target="act-del-ent" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="act-del-ent" target="act-db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="act-db" target="act-200" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;entryX=1;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="960" y="710" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="act-200" target="act-remove-ui" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="act-remove-ui" target="end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="act-err" target="end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="305" y="485" />
+              <mxPoint x="305" y="810" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
